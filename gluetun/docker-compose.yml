@@ -1,0 +1,25 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun-vpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8888:8888/tcp # HTTP proxy
+      - 8080:8080 # Qbittorrent
+      - 6881:6881 # Qbittorrent
+      - 6881:6881/udp # Qbittorrent
+    volumes:
+      - /home/k/docker/gluetun/data:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=mullvad
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY={My Private Key}
+      - WIREGUARD_ADDRESSES={My Address}
+      - SERVER_CITIES=Amsterdam
+      - TZ=Europe/London
+    restart: unless-stopped
+
