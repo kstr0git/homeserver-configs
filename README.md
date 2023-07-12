@@ -1,4 +1,4 @@
-# My Homeserver config
+# My homeserver config
 This repo contains various docker-compose files that are currently running on my home lab. This is mostly just for my own personal use but if you find anything useful I hope it helps!
 - `homer` - A custom static homepage/dashboard configured with a simple yml file.
 - `jellyfin` - A clean home media server.
