@@ -6,9 +6,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
+      - WATCHTOWER_MONITOR_ONLY=true
+      - WATCHTOWER_NOTIFICATIONS="shoutrrr"
+      - ATCHTOWER_NOTIFICATION_URL="discord://token@webhookid"
       - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_INCLUDE_RESTARTING=true
       - WATCHTOWER_SCHEDULE=0 0 4 1 * *
       - TZ=Europe/London
+    # - WATCHTOWER_INCLUDE_RESTARTING=true
     restart: unless-stopped
-
